@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: [ ubuntu-latest ]
-    container: almalinux:8
+    container: almalinux:9
     env:
       python-version: 3.12
 
@@ -24,7 +24,11 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
-          cd /opt/
+
+      - name: Setup Node (semantic-release)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,11 +44,6 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
-
-      - name: Setup Node (semantic-release)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
 
       - name: b
         run: |
