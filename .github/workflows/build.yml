@@ -24,7 +24,7 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
-          cd /opt
+          cd ${GITHUB_WORKSPACE}
 
       - name: a
         run: |
@@ -37,6 +37,7 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          cd ${GITHUB_WORKSPACE}
           git status || true
           echo '---6------'
           ls -l ${GITHUB_WORKSPACE} || true
@@ -56,6 +57,7 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          cd ${GITHUB_WORKSPACE}
           git status || true
           echo '---6------'
           ls -l ${GITHUB_WORKSPACE} || true
@@ -77,6 +79,7 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          cd ${GITHUB_WORKSPACE}
           git status || true
           echo '---6------'
           ls -l ${GITHUB_WORKSPACE} || true
@@ -104,6 +107,7 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          cd ${GITHUB_WORKSPACE}
           git status || true
           echo '---6------'
           ls -l ${GITHUB_WORKSPACE} || true
