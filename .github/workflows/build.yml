@@ -16,18 +16,6 @@ jobs:
 
     steps:
 
-      - name: a
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
-
       - name: Prepare
         run: |
           export LANG=en_US.UTF-8
@@ -37,10 +25,8 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
-          rm -fr ${GITHUB_WORKSPACE}/*
-          cd ${GITHUB_WORKSPACE}
 
-      - name: b
+      - name: a
         run: |
           echo '---1------'
           cat /etc/os-release
@@ -54,6 +40,21 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: b
+        run: |
+          echo '---1------'
+          cat /etc/os-release
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
+          git status || true
+          echo '---5------'
+
+      - name: Mark repository as safe
+        run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
 
       - name: c
         run: |
