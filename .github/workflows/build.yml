@@ -25,7 +25,6 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
-          ls -l ${{ github.workspace }}
           cd /opt/
 
       - name: Checkout
