@@ -13,6 +13,7 @@ jobs:
     container: almalinux:9
     env:
       python-version: 3.12
+      GITHUB_WORKSPACE: /opt/
 
     steps:
       - name: Prepare
@@ -24,6 +25,7 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
+          ls -l ${{ github.workspace }}
           cd /opt/
 
       - name: Checkout
