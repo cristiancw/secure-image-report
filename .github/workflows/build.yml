@@ -24,6 +24,7 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
+          rm -fr ${GITHUB_WORKSPACE}/*
           cd ${GITHUB_WORKSPACE}
 
       - name: a
