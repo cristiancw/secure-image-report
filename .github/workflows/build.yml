@@ -39,6 +39,8 @@ jobs:
           echo '---5------'
           git status || true
           echo '---6------'
+          ls -l ${GITHUB_WORKSPACE} || true
+          echo '---7------'
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -56,6 +58,8 @@ jobs:
           echo '---5------'
           git status || true
           echo '---6------'
+          ls -l ${GITHUB_WORKSPACE} || true
+          echo '---7------'
 
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
@@ -75,6 +79,8 @@ jobs:
           echo '---5------'
           git status || true
           echo '---6------'
+          ls -l ${GITHUB_WORKSPACE} || true
+          echo '---7------'
 
       - name: Get next version (Semantic Release)
         uses: cycjimmy/semantic-release-action@v4
@@ -100,6 +106,8 @@ jobs:
           echo '---5------'
           git status || true
           echo '---6------'
+          ls -l ${GITHUB_WORKSPACE} || true
+          echo '---7------'
 
       - name: Update version
         if: steps.semantic.outputs.new_release_published == 'true'
