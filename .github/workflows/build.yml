@@ -24,6 +24,7 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
+          cd /opt
 
       - name: a
         run: |
