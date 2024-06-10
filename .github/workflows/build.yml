@@ -29,10 +29,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: a
+        run: |
+          echo '---1------'
+          pwd
+          echo '---2------'
+          ls -l
+          echo '---3------'
+          ls -l /opt
+          echo '---4------'
+
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
+
+      - name: b
+        run: |
+          echo '---1------'
+          pwd
+          echo '---2------'
+          ls -l
+          echo '---3------'
+          ls -l /opt
+          echo '---4------'
 
       - name: Get next version (Semantic Release)
         uses: cycjimmy/semantic-release-action@v4
@@ -44,6 +64,17 @@ jobs:
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: c
+        run: |
+          echo '---1------'
+          pwd
+          echo '---2------'
+          ls -l
+          echo '---3------'
+          ls -l /opt
+          echo '---4------'
+
 
       - name: Update version
         if: steps.semantic.outputs.new_release_published == 'true'
