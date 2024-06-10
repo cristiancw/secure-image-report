@@ -15,6 +15,19 @@ jobs:
       python-version: 3.12
 
     steps:
+
+      - name: a
+        run: |
+          echo '---1------'
+          cat /etc/os-release
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
+          git status || true
+          echo '---5------'
+
       - name: Prepare
         run: |
           export LANG=en_US.UTF-8
@@ -27,64 +40,49 @@ jobs:
           rm -fr ${GITHUB_WORKSPACE}/*
           cd ${GITHUB_WORKSPACE}
 
-      - name: a
+      - name: b
         run: |
           echo '---1------'
-          pwd
-          echo '---2------'
-          ls -l
-          echo '---3------'
-          ls -l /opt
-          echo '---4------'
           cat /etc/os-release
-          echo '---5------'
-          cd ${GITHUB_WORKSPACE}
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
           git status || true
-          echo '---6------'
-          ls -l ${GITHUB_WORKSPACE} || true
-          echo '---7------'
+          echo '---5------'
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: b
+      - name: c
         run: |
           echo '---1------'
-          pwd
-          echo '---2------'
-          ls -l
-          echo '---3------'
-          ls -l /opt
-          echo '---4------'
           cat /etc/os-release
-          echo '---5------'
-          cd ${GITHUB_WORKSPACE}
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
           git status || true
-          echo '---6------'
-          ls -l ${GITHUB_WORKSPACE} || true
-          echo '---7------'
+          echo '---5------'
 
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: c
+      - name: d
         run: |
           echo '---1------'
-          pwd
-          echo '---2------'
-          ls -l
-          echo '---3------'
-          ls -l /opt
-          echo '---4------'
           cat /etc/os-release
-          echo '---5------'
-          cd ${GITHUB_WORKSPACE}
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
           git status || true
-          echo '---6------'
-          ls -l ${GITHUB_WORKSPACE} || true
-          echo '---7------'
+          echo '---5------'
 
       - name: Get next version (Semantic Release)
         uses: cycjimmy/semantic-release-action@v4
@@ -97,22 +95,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: d
+      - name: e
         run: |
           echo '---1------'
-          pwd
-          echo '---2------'
-          ls -l
-          echo '---3------'
-          ls -l /opt
-          echo '---4------'
           cat /etc/os-release
-          echo '---5------'
-          cd ${GITHUB_WORKSPACE}
+          echo '---2------'
+          pwd
+          echo '---3------'
+          ls -la
+          echo '---4------'
           git status || true
-          echo '---6------'
-          ls -l ${GITHUB_WORKSPACE} || true
-          echo '---7------'
+          echo '---5------'
 
       - name: Update version
         if: steps.semantic.outputs.new_release_published == 'true'
