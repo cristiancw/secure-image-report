@@ -27,6 +27,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
