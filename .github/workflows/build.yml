@@ -1,0 +1,71 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: [ ubuntu-latest ]
+    container: almalinux:9
+    env:
+      python-version: 3.12
+
+    steps:
+      - name: Prepare
+        run: |
+          export LANG=en_US.utf-8
+          dnf install -y findutils git make python${{ env.python-version }} zip
+          echo "--- Git version ---"
+          git --version
+          echo "--- Python version ---"
+          python${{ env.python-version }} --version
+          cd /opt/
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (semantic-release)
+        uses: actions/setup-node@v4
+        # with:
+        #   node-version: '14'
+
+      - name: Get next version (Semantic Release)
+        uses: cycjimmy/semantic-release-action@v4
+        id: semantic
+        with:
+          dry_run: true
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update version
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          sed -i "s|version='0.0.1'|version='${{ steps.semantic.outputs.new_release_version }}'|g" setup.py
+
+      - name: Build
+        run: |
+          make init VERSION=${{ env.python-version }}
+          make build
+          make install
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove stuff
+        if: always()
+        run: |
+          rm -fr *
+          ls -l

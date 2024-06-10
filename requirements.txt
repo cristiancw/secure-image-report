@@ -1,0 +1,7 @@
+# project
+click~=8.1
+importlib-metadata~=7.1
+
+# build
+setuptools~=70.0
+pyinstaller~=6.8
