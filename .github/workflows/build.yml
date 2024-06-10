@@ -25,14 +25,6 @@ jobs:
           echo "--- Python version ---"
           python${{ env.python-version }} --version
 
-      - name: Setup Node (semantic-release)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: a
         run: |
           echo '---1------'
@@ -44,6 +36,11 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          git status
+          echo '---6------'
+
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: b
         run: |
@@ -56,17 +53,13 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          git status
+          echo '---6------'
 
-      - name: Get next version (Semantic Release)
-        uses: cycjimmy/semantic-release-action@v4
-        id: semantic
+      - name: Setup Node (semantic-release)
+        uses: actions/setup-node@v4
         with:
-          dry_run: true
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          node-version: '20'
 
       - name: c
         run: |
@@ -79,7 +72,33 @@ jobs:
           echo '---4------'
           cat /etc/os-release
           echo '---5------'
+          git status
+          echo '---6------'
 
+      - name: Get next version (Semantic Release)
+        uses: cycjimmy/semantic-release-action@v4
+        id: semantic
+        with:
+          dry_run: true
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: d
+        run: |
+          echo '---1------'
+          pwd
+          echo '---2------'
+          ls -l
+          echo '---3------'
+          ls -l /opt
+          echo '---4------'
+          cat /etc/os-release
+          echo '---5------'
+          git status
+          echo '---6------'
 
       - name: Update version
         if: steps.semantic.outputs.new_release_published == 'true'
