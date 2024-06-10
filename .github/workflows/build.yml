@@ -24,16 +24,15 @@ jobs:
           git --version
           echo "--- Python version ---"
           python${{ env.python-version }} --version
+          cd /opt/
 
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '14'
 
       - name: Get next version (Semantic Release)
         uses: cycjimmy/semantic-release-action@v4
