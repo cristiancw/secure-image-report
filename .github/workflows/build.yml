@@ -26,64 +26,16 @@ jobs:
           echo "--- Python version ---"
           python${{ env.python-version }} --version
 
-      - name: a
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
-
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: b
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
-
-      - name: Mark repository as safe
-        run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
-
-      - name: c
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
+      # - name: Mark repository as safe
+      #   run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
 
       - name: Setup Node (semantic-release)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: d
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
 
       - name: Get next version (Semantic Release)
         uses: cycjimmy/semantic-release-action@v4
@@ -95,18 +47,6 @@ jobs:
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: e
-        run: |
-          echo '---1------'
-          cat /etc/os-release
-          echo '---2------'
-          pwd
-          echo '---3------'
-          ls -la
-          echo '---4------'
-          git status || true
-          echo '---5------'
 
       - name: Update version
         if: steps.semantic.outputs.new_release_published == 'true'
