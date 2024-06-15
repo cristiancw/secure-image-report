@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/cristiancw/secure-image-report/compare/v1.1.2...v1.1.3) (2024-06-15)
+
+
+### Bug Fixes
+
+* CI file reference ([d979f49](https://github.com/cristiancw/secure-image-report/commit/d979f49d1901b739cf8676847dbee1d5d79eb9be))
+
 ## [1.1.2](https://github.com/cristiancw/secure-image-report/compare/v1.1.1...v1.1.2) (2024-06-15)
 
 
