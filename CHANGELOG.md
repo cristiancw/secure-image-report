@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/cristiancw/secure-image-report/compare/v1.1.3...v1.1.4) (2024-06-15)
+
+
+### Bug Fixes
+
+* Add pyinstaller to build the binary ([d0de120](https://github.com/cristiancw/secure-image-report/commit/d0de1205b6b5a82b440cade80996d5ff9c28fe93))
+
 ## [1.1.3](https://github.com/cristiancw/secure-image-report/compare/v1.1.2...v1.1.3) (2024-06-15)
 
 
