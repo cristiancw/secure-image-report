@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/cristiancw/secure-image-report/compare/v1.0.0...v1.1.0) (2024-06-15)
+
+
+### Features
+
+* Add feature to list aws ecr scan and gerenare a xlsx report ([5f8d831](https://github.com/cristiancw/secure-image-report/commit/5f8d8311f3b06fc344268552f9f84362f6e66edc))
+
 # 1.0.0 (2024-06-10)
 
 
