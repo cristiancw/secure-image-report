@@ -17,14 +17,16 @@ setup(
     license='Apache-2.0 license',
     long_description=readme,
     long_description_content_type="text/markdown",
-    package_dir={'': 'src'},
     packages=find_packages(where='src'),
+    package_dir={'': 'src'},
     python_requires='>=3.12',
-    # packages=find_packages(),
-    include_package_data=True,
     install_requires=[req for req in requirements if req[:2] != "# "],
     entry_points='''
         [console_scripts]
         secure-image-report=com.cristiancw.secure_image_report.secure_image_report:main
     ''',
+    include_package_data=True,
+    data_files=[
+        'requirements.txt'
+    ],
 )
