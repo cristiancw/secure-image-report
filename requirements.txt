@@ -1,7 +1,8 @@
 # project
 click~=8.1
-importlib-metadata~=7.1
-
-# build
-setuptools~=70.0
-pyinstaller~=6.8
+importlib_metadata~=7.1
+botocore~=1.34
+boto3~=1.34
+pandas~=2.2
+openpyxl~=3.1
+numpy~=1.26
