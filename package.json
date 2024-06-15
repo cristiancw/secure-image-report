@@ -1,49 +1,49 @@
 {
-    "name": "secure-image-report",
-    "version": "0.0.1",
-    "description": "It is a Python tool designed to generate XLS reports from vulnerability scan results of ECR (Elastic Container Registry) images on AWS. This tool facilitates the analysis and visualization of security data, enabling a more efficient approach to mitigating vulnerabilities in container environments.",
-    "release": {
-        "branches": [
-            "main"
-        ],
-        "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
-            "@semantic-release/changelog",
-            [
-                "@semantic-release/github",
-                {
-                    "assets": [
-                        {
-                            "path": "dist/secure-image-report.zip",
-                            "label": "secure-image-report.zip"
-                        }
-                    ]
-                }
-            ],
-            "@semantic-release/git"
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/cristiancw/secure-image-report.git"
-    },
-    "keywords": [
-        "cristian",
-        "wolfram",
-        "cristiancw",
-        "secure-image-report",
-        "scan",
-        "report",
-        "ecr",
-        "aws",
-        "blumenau",
-        "brazil"
+  "name": "secure-image-report",
+  "version": "0.0.1",
+  "description": "It is a Python tool designed to generate XLS reports from vulnerability scan results of ECR (Elastic Container Registry) images on AWS. This tool facilitates the analysis and visualization of security data, enabling a more efficient approach to mitigating vulnerabilities in container environments.",
+  "release": {
+    "branches": [
+      "main"
     ],
-    "author": "Critian C. Wolfram",
-    "license": "Apache-2.0 license",
-    "bugs": {
-        "url": "https://github.com/cristiancw/secure-image-report/issues"
-    },
-    "homepage": "https://github.com/cristiancw/secure-image-report#readme"
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "dist/secure-image-report",
+              "label": "secure-image-report.zip"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/git"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiancw/secure-image-report.git"
+  },
+  "keywords": [
+    "cristian",
+    "wolfram",
+    "cristiancw",
+    "secure-image-report",
+    "scan",
+    "report",
+    "ecr",
+    "aws",
+    "blumenau",
+    "brazil"
+  ],
+  "author": "Critian C. Wolfram",
+  "license": "Apache-2.0 license",
+  "bugs": {
+    "url": "https://github.com/cristiancw/secure-image-report/issues"
+  },
+  "homepage": "https://github.com/cristiancw/secure-image-report#readme"
 }
