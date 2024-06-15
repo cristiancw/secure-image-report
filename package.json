@@ -15,7 +15,7 @@
         {
           "assets": [
             {
-              "path": "dist/secure-image-report",
+              "path": "dist/secure-image-report.zip",
               "label": "secure-image-report.zip"
             }
           ]
