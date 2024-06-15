@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/cristiancw/secure-image-report/compare/v1.1.0...v1.1.1) (2024-06-15)
+
+
+### Bug Fixes
+
+* CI generation binary location ([ea10089](https://github.com/cristiancw/secure-image-report/commit/ea1008977df71606a508aba2fd3ac8ecdab9c077))
+
 # [1.1.0](https://github.com/cristiancw/secure-image-report/compare/v1.0.0...v1.1.0) (2024-06-15)
 
 
