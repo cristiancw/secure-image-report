@@ -17,7 +17,7 @@ build: clean ##Create the binary.
 
 install: build ##Create the binary.
 	.venv/bin/pip install .
-	cp .venv/bin/secure-image-report dist/
+	zip -j dist/secure-image-report.zip .venv/bin/secure-image-report
 
 clean: ##Remove previous files and build artifacts.
 	rm -fr build/
