@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/cristiancw/secure-image-report/compare/v1.1.1...v1.1.2) (2024-06-15)
+
+
+### Bug Fixes
+
+* CI binary content ([ed8c00d](https://github.com/cristiancw/secure-image-report/commit/ed8c00d50f07e014dbdb0eb3fea99d43a2f7da75))
+
 ## [1.1.1](https://github.com/cristiancw/secure-image-report/compare/v1.1.0...v1.1.1) (2024-06-15)
 
 
