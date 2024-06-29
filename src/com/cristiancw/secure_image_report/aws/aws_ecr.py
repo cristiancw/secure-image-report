@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Dict, Optional
 
 import boto3
 import click
@@ -44,12 +45,21 @@ class AwsEcr:
                 return attr['value']
         return ''
 
+    @staticmethod
+    def __update_latest_image(latest_image: Optional[Dict[str, datetime]], image: Dict[str, datetime]) -> (
+            Dict)[str, datetime]:
+        if latest_image is None or image['imagePushedAt'] > latest_image['imagePushedAt']:
+            return image
+        return latest_image
+
     def get_image_scan_results(self) -> list[AwsImage]:
         """
         Get the findings of the last image from all the repositories that the profile and the region get access.
         :return: a list of scan image results
         """
         repositories = self.__get_repositories()
+
+        repositories = ["tasy/tasyemr", "tws/patient-service"]
 
         aws_images = []
         for repository in repositories:
@@ -68,11 +78,20 @@ class AwsEcr:
         return [repo['repositoryName'] for repo in response['repositories']]
 
     def __get_latest_image(self, repository_name: str = '') -> [str, datetime]:
+        latest_image = None
+
         describe_images = self._ecr_client.describe_images(repositoryName=repository_name)
-        images = sorted(describe_images['imageDetails'], key=lambda x: x['imagePushedAt'], reverse=True)
-        if images:
-            latest_image = images[0]
-            tag = latest_image['imageTags'][0] if 'imageTags' in latest_image else None
+        for image in describe_images['imageDetails']:
+            latest_image = self.__update_latest_image(latest_image, image)
+
+        while 'nextToken' in describe_images:
+            describe_images = self._ecr_client.describe_images(repositoryName=repository_name,
+                                                               nextToken=describe_images['nextToken'])
+            for image in describe_images['imageDetails']:
+                latest_image = self.__update_latest_image(latest_image, image)
+
+        if latest_image:
+            tag = latest_image['imageTags'] if 'imageTags' in latest_image else None
             pushed_at = latest_image['imagePushedAt']
             return tag, pushed_at
 
