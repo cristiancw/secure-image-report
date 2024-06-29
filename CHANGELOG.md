@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/cristiancw/secure-image-report/compare/v1.1.4...v1.1.5) (2024-06-29)
+
+
+### Bug Fixes
+
+* Not getting the last image when pagination occurs ([8dd05b5](https://github.com/cristiancw/secure-image-report/commit/8dd05b51be7eec197ea29283d92f74c4d9abaa02))
+
 ## [1.1.4](https://github.com/cristiancw/secure-image-report/compare/v1.1.3...v1.1.4) (2024-06-15)
 
 
