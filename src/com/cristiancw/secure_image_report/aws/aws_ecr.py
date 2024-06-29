@@ -58,9 +58,6 @@ class AwsEcr:
         :return: a list of scan image results
         """
         repositories = self.__get_repositories()
-
-        repositories = ["tasy/tasyemr", "tws/patient-service"]
-
         aws_images = []
         for repository in repositories:
             click.echo(f"Getting the last image from: {repository}")
