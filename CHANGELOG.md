@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/cristiancw/secure-image-report/compare/v1.1.5...v1.1.6) (2024-06-29)
+
+
+### Bug Fixes
+
+* Remove test repositories (with many values) ([ab6dc68](https://github.com/cristiancw/secure-image-report/commit/ab6dc68e34a6ea28514680d258899d297b2f201f))
+
 ## [1.1.5](https://github.com/cristiancw/secure-image-report/compare/v1.1.4...v1.1.5) (2024-06-29)
 
 
