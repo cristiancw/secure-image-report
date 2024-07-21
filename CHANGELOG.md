@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cristiancw/secure-image-report/compare/v1.1.6...v1.2.0) (2024-07-21)
+
+
+### Features
+
+* Add feature to allow user to choose the repositories to scan (instead all of them) ([59dfa92](https://github.com/cristiancw/secure-image-report/commit/59dfa921d19b903877ea1e1418cf1e92cdf86c78))
+
 ## [1.1.6](https://github.com/cristiancw/secure-image-report/compare/v1.1.5...v1.1.6) (2024-06-29)
 
 
