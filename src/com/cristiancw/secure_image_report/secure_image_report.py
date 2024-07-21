@@ -12,15 +12,22 @@ from com.cristiancw.secure_image_report.report.report_generator import ReportGen
 @click.option("--profile", required=True,
               help="To choose the predefined profile in the awscli settings. E.g.: --profile my_aws_profile")
 @click.option("--region", required=True, help="To choose the aws region. E.g.: --region sa-east-1")
-def main(profile='', region=''):
+@click.option("--repos",
+              help="to filter the list of repository, separated by comma. E.g.: --repos my_repo_1,my_repo_2,my_repo_3")
+def main(profile='', region='', repos=''):
     """
     It is tool designed to generate reports from vulnerability scan results of ECR images on AWS.
     This tool facilitates the analysis and visualization of security data, enabling a more efficient
     approach to mitigating vulnerabilities in container environments.
     """
     try:
+        if repos is None:
+            repositories_from_user = None
+        else:
+            repositories_from_user = repos.split(',')
+
         aws_ecr = AwsEcr(profile=profile, region=region)
-        image_scan_results = aws_ecr.get_image_scan_results()
+        image_scan_results = aws_ecr.get_image_scan_results(repositories_from_user)
 
         report_content = ReportConverter.convert(image_scan_results)
 

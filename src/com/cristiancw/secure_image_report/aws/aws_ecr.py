@@ -52,12 +52,14 @@ class AwsEcr:
             return image
         return latest_image
 
-    def get_image_scan_results(self) -> list[AwsImage]:
+    def get_image_scan_results(self, repositories=None) -> list[AwsImage]:
         """
         Get the findings of the last image from all the repositories that the profile and the region get access.
+        :param repositories: a list of repos names provided by the user
         :return: a list of scan image results
         """
-        repositories = self.__get_repositories()
+        if repositories is None:
+            repositories = self.__get_repositories()
         aws_images = []
         for repository in repositories:
             click.echo(f"Getting the last image from: {repository}")
@@ -71,8 +73,11 @@ class AwsEcr:
         return aws_images
 
     def __get_repositories(self) -> list[str]:
-        response = self._ecr_client.describe_repositories()
-        return [repo['repositoryName'] for repo in response['repositories']]
+        repositories = []
+        describe_repositories = self._ecr_client.get_paginator('describe_repositories')
+        for page in describe_repositories.paginate():
+            repositories.extend(page['repositories'])
+        return [repo['repositoryName'] for repo in repositories]
 
     def __get_latest_image(self, repository_name: str = '') -> [str, datetime]:
         latest_image = None
@@ -88,7 +93,7 @@ class AwsEcr:
                 latest_image = self.__update_latest_image(latest_image, image)
 
         if latest_image:
-            tag = latest_image['imageTags'] if 'imageTags' in latest_image else None
+            tag = latest_image['imageTags'][0] if 'imageTags' in latest_image else None
             pushed_at = latest_image['imagePushedAt']
             return tag, pushed_at
 
