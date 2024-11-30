@@ -41,6 +41,9 @@ class ReportGenerator:
         workbook = load_workbook(self._xls_file)
         worksheet = workbook.active
 
+        # apply the auto-filter in the report
+        worksheet.auto_filter.ref = worksheet.dimensions
+
         for col, width in self._content.get_column_sizes().items():
             worksheet.column_dimensions[col].width = width
             if col == 'I':
