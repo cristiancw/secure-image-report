@@ -8,7 +8,7 @@ class ReportContent:
     Contains the values and structure of the report.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._lines = list[ReportContentLine]()
 
     @staticmethod
@@ -20,14 +20,19 @@ class ReportContent:
         return {
             'A': 30,
             'B': 30,
-            'C': 15,
-            'D': 20,
-            'E': 18,
+            'C': 75,
+            'D': 15,
+            'E': 20,
             'F': 15,
-            'G': 12,
-            'H': 45,
-            'I': 200,
-            'J': 75
+            'G': 15,
+            'H': 18,
+            'I': 15,
+            'J': 12,
+            'K': 45,
+            'L': 40,
+            'M': 20,
+            'N': 20,
+            'O': 200,
         }
 
     @staticmethod
@@ -59,12 +64,17 @@ class ReportContent:
         return {
             'Repository Name': [item.repository_name for item in self._lines],  # 'A'
             'Image Tag': [item.image_tag for item in self._lines],  # 'B'
-            'Image Scanned': [item.image_were_scanned for item in self._lines],  # 'C'
-            'Scan Completed At': [item.scan_completed_at for item in self._lines],  # 'D'
-            'Issue Name': [item.finding_name for item in self._lines],  # 'E'
-            'Issue Severity': [item.finding_severity for item in self._lines],  # 'F'
-            'Issue Score': [item.finding_cvss3_score for item in self._lines],  # 'G'
-            'Issue Vector': [item.finding_cvss3_vector for item in self._lines],  # 'H'
-            'Issue Description': [item.finding_description for item in self._lines],  # 'I'
-            'Image Digest': [item.image_digest for item in self._lines],  # 'J'
+            'Image Digest': [item.image_digest for item in self._lines],  # 'C'
+            'Image Scanned': ['YES' if item.image_were_scanned else 'NO' for item in self._lines],  # 'D'
+            'Scan Completed At': [item.scan_completed_at for item in self._lines],  # 'E'
+            'Architecture': [item.arch for item in self._lines],  # 'F'
+            'Status': [item.status for item in self._lines],  # 'G'
+            'Issue Name': [item.finding_name for item in self._lines],  # 'H'
+            'Issue Severity': [item.finding_severity for item in self._lines],  # 'I'
+            'Issue Score': [item.finding_cvss3_score for item in self._lines],  # 'J'
+            'Issue Vector': [item.finding_cvss3_vector for item in self._lines],  # 'K'
+            'Remediation': [item.finding_remediation for item in self._lines],  # 'L'
+            'Fix Available': [item.finding_fix_available for item in self._lines],  # 'M'
+            'Exploit Available': [item.finding_exploit_available for item in self._lines],  # 'N'
+            'Issue Description': [item.finding_description for item in self._lines],  # 'O'
         }

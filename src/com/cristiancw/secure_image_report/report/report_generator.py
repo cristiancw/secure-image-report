@@ -13,7 +13,7 @@ class ReportGenerator:
     Based in the ReportContent object with ReportContentLine will create a report.
     """
 
-    def __init__(self, content: ReportContent = None):
+    def __init__(self, content: ReportContent = None) -> None:
         """
         Main constructor.
         :param content: with all the lines to create the report

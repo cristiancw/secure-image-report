@@ -13,8 +13,8 @@ from com.cristiancw.secure_image_report.report.report_generator import ReportGen
               help="To choose the predefined profile in the awscli settings. E.g.: --profile my_aws_profile")
 @click.option("--region", required=True, help="To choose the aws region. E.g.: --region sa-east-1")
 @click.option("--repos",
-              help="to filter the list of repository, separated by comma. E.g.: --repos my_repo_1,my_repo_2,my_repo_3")
-def main(profile='', region='', repos=''):
+              help="to filter the list of repository, separated by comma with no spaces. E.g.: --repos my_repo_1,my_repo_2,my_repo_3")
+def main(profile: str = None, region: str = None, repos: str = None):
     """
     It is tool designed to generate reports from vulnerability scan results of ECR images on AWS.
     This tool facilitates the analysis and visualization of security data, enabling a more efficient
@@ -22,12 +22,12 @@ def main(profile='', region='', repos=''):
     """
     try:
         if repos is None:
-            repositories_from_user = None
+            repository_list_from_user = None
         else:
-            repositories_from_user = repos.split(',')
+            repository_list_from_user = repos.split(',')
 
         aws_ecr = AwsEcr(profile=profile, region=region)
-        image_scan_results = aws_ecr.get_image_scan_results(repositories_from_user)
+        image_scan_results = aws_ecr.get_image_scan_results(repository_list_from_user)
 
         report_content = ReportConverter.convert(image_scan_results)
 
