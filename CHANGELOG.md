@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cristiancw/secure-image-report/compare/v1.2.0...v1.3.0) (2024-12-08)
+
+
+### Features
+
+* Add support for basic and enhanced scan results ([1cb8da5](https://github.com/cristiancw/secure-image-report/commit/1cb8da59d9820f2c1b4a48ee84281596be96e29a))
+
 # [1.2.0](https://github.com/cristiancw/secure-image-report/compare/v1.1.6...v1.2.0) (2024-07-21)
 
 
